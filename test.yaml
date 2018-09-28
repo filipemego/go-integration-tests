@@ -1,0 +1,13 @@
+test:
+  group: "jobad-inactivations"
+  name: "User without permission try to inactivate a job ad"
+  url: "/job-ads/FUNCTIONAL-INACTIVE001/inactivations"
+  method: "POST"
+  headers: 'asdasd'
+
+test:
+  group: "jobad-inactivations"
+  name: "AAA"
+  url: "/job-ads/FUNCTIONAL-INACTIVE001/inactivations"
+  method: "POST"
+  headers: 'asdasd'

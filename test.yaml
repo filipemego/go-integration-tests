@@ -1,13 +1,15 @@
-test:
-  group: "jobad-inactivations"
-  name: "User without permission try to inactivate a job ad"
-  url: "/job-ads/FUNCTIONAL-INACTIVE001/inactivations"
-  method: "POST"
-  headers: 'asdasd'
+config:
+  baseUrl: "http://localhost:8080"
+  timeout: 2
 
-test:
-  group: "jobad-inactivations"
-  name: "AAA"
-  url: "/job-ads/FUNCTIONAL-INACTIVE001/inactivations"
-  method: "POST"
-  headers: 'asdasd'
+tests:
+  - group: "jobad-inactivations"
+    name: "PUT a jobad"
+    url: "/job-ads/FUNCTIONAL-CREATE002"
+    method: "PUT"
+    headers: {'Content-Type': 'application/json', 'Author': '{"origin": "site", "role": "crm-operator", "identification": "somebody@company.com"}'}
+    body: '{"id":"CREATE002","title":"Software Engineer","companyID":"FUNCTIONAL","tags":["software","engineer"],"jobDetailsSchema":"catho_jobDetails_v1","jobDetails":{"categories":["oi"],"hierarchicalLevels":["EXAMPLE"],"types":["PROFESSIONAL"],"disabilities":{"exclusive":false,"type":"HEARING","additionalInformation":"Should read braille.","course":"Blind programming","options":{"is_accessible":true,"is_companion_friendly":true,"public_transport":true,"braille":true,"lip_reading":true,"sign_language":false,"adapted_vehicle":false}},"activities":"Build and maintain web applications.","additionalInformation":"Candidates must be available for travel.","requirements":{"experiences":"Must know Python.","internship":{"years":[1,2]},"languages":[{"language":"ENGLISH","level":"BEGINNER"}]},"confidential":{"advertiser":true,"hirer":false,"salary":false},"hirer":{"name":"Manager","businessArea":"Internet/Sites","companyType":"NATIONAL","companySize":"SMALL","description":"Uma empresa do grupo Seek"},"positions":[{"location":{"country":"Brasil","state":"SP","city":"São Paulo","address":"Alameda Juari, 262","postalCode":"06460"},"quantity":10,"salary":1520,"salaryRange":{"min":1000,"max":2000}}],"benefits":["VR","VT"],"workTypes":["CLT"],"workTimeDescription":"Domingo à Domingo, das 7hs às 23hs","workTime":"EVENING","internalCode":"MANAGER001"}}'
+    expected:
+      - statusCode: 201
+      - headers: {'Content-Type': 'application/vnd.catho.jobads.jobad.v1+json'}
+      - body: '{"teste":123}'

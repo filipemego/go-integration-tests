@@ -1,0 +1,14 @@
+config:
+  baseUrl: "http://localhost:8080"
+  timeout: 2
+
+tests:
+  - group: "jobad-inactivations"
+    name: "GET a jobad"
+    url: "/job-ads/FUNCTIONAL-CREATE001"
+    method: "GET"
+    headers: {'Content-Type': 'application/json', 'Author': '{"origin": "site", "role": "crm-operator", "identification": "somebody@company.com"}'}
+    expected:
+      - statusCode: 200
+      - headers: {'Content-Type': 'application/vnd.catho.jobads.jobad.v2+json'}
+
